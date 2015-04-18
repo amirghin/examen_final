@@ -1,0 +1,38 @@
+.filas label{
+	
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 10%;
+    text-align: right;	
+}
+
+.filas input{
+
+	display: inline-block;
+  	float: left;
+  	padding-right: 1em;
+
+}
+
+.filas input.button{
+
+	margin: 0 auto;
+	display: inline-block;
+	float: left;
+	clear:left;
+	width: 8%;
+	padding: 0.6em;
+	font-weight: bold;
+
+
+}
+
+
+fieldset{
+
+	border: 0;
+}
+
+
+
