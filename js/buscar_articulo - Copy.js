@@ -30,8 +30,7 @@ function stateChanged_articulo()
 { 
 if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete")
 { 
-  var articulo_json = JSON.parse(xmlHttp.responseText);
- 	document.getElementById('nom_articulo').value = articulo_json.descripcion;
+ 	document.getElementById('nom_articulo').value = xmlHttp.responseText;
 } 
 } 
 function GetXmlHttpObject()

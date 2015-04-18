@@ -3,8 +3,8 @@
 require "conexion.php";
 
 
-$articulo = array();
-$query = "SELECT descripcion, disponible, precio FROM inventario WHERE codigo_articulo = '{$_GET['cod_articulo']}'";
+$articulo = "";
+$query = "SELECT descripcion FROM inventario WHERE codigo_articulo = '{$_GET['cod_articulo']}'";
 
 
 try {
@@ -20,8 +20,9 @@ try {
 
   	}else{
 
-  		
-  		$articulo = mysqli_fetch_assoc($resultado);
+  		$row = mysqli_fetch_assoc($resultado);
+  		$articulo = $row['descripcion'];
+  		echo $articulo;
 
   	}
 
@@ -29,9 +30,8 @@ try {
 
 } catch (Exception $e) {
 	
-	$articulo = array("descripcion" => $e->GetMessage());
-
+	$articulo = $e->GetMessage();
+	echo $articulo;
 }
 
-echo json_encode($articulo);
 ?>
