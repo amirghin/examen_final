@@ -1,12 +1,13 @@
-var cantidad;
+var total_detalle;
 
 function MostrarTotales(e){
 
 if (e.keyCode==13){
 
   if(document.getElementById("cantidad").value != "" && document.getElementById("cod_articulo").value != "" && document.getElementById("num_factura").value != ""){
-    cantidad = document.getElementById("cantidad").value;
+    
     BuscarArticulo(document.getElementById("cod_articulo").value);
+
     
   }else if(document.getElementById("cod_articulo").value == ""){
     alert("Por favor seleccione un codigo de articulo");
@@ -35,15 +36,20 @@ function BuscarArticulo(articulo){
 function stateChanged_buscar_articulo() { 
 if (xmlHttp_buscar_articulo.readyState==4 || xmlHttp_buscar_articulo.readyState=="complete"){ 
   var articulo_json = JSON.parse(xmlHttp_buscar_articulo.responseText);
-  if (articulo_json.descripcion && articulo_json.disponible >= cantidad){
-    var descuento = (articulo_json.descuento * articulo_json.precio / 100);
-    document.getElementById("total_detalle").value =  (articulo_json.precio - descuento) * cantidad;
+  var cantidad = parseFloat(document.getElementById("cantidad").value);
+  var disponible = parseFloat(articulo_json.disponible);
+  var precio = parseFloat(articulo_json.precio);
+
+  if (articulo_json.descripcion && disponible >= cantidad){
+    var descuento = (parseFloat(articulo_json.descuento) * precio / 100);
+    total_detalle = (precio - descuento) * cantidad;
+    document.getElementById("total_detalle").value = total_detalle;
     document.getElementById("descuento").value = articulo_json.descuento;
     TotalAcumulado(document.getElementById("num_factura").value);
   }else if(!articulo_json.descripcion){
     alert("El codigo del articulo no existe");
-  }else if(cantidad > articulo_json.disponible){
-    alert("No hay suficientes articulos en inventario");
+  }else if(cantidad > disponible){
+    alert("No hay suficientes articulos en inventario, solo quedan " + disponible + " disponibles");
   }
 } 
 } 
@@ -65,7 +71,7 @@ function TotalAcumulado(factura){
 
 function stateChanged_total_acumulado() { 
 if (xmlHttp_total_acumulado.readyState==4 || xmlHttp_total_acumulado.readyState=="complete"){ 
-  document.getElementById('total_acumulado').value = xmlHttp_total_acumulado.responseText;
+  document.getElementById('total_acumulado').value = parseFloat(xmlHttp_total_acumulado.responseText) + total_detalle;
 } 
 } 
 
