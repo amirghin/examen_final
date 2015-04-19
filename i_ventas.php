@@ -6,6 +6,7 @@
 	<script src="js/buscar_articulo.js" type="text/javascript"></script>
 	<script src="js/buscar_categoria.js" type="text/javascript"></script>
 	<script src="js/buscar_personal.js" type="text/javascript"></script>
+	<script src="js/totales.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -32,7 +33,7 @@
 		</div>
 		<div class="filas">
 			<label for="cantidad">Cantidad: </label>
-			<input type="number" id="cantidad" name="cantidad">
+			<input type="number" id="cantidad" name="cantidad" onkeypress="MostrarTotales(event);">
 		</div>
 		<div class="filas">
 			<label for="total_detalle">Total Detalle: </label>
