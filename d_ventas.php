@@ -1,3 +1,17 @@
+<?php
+require "conexion.php";
+require "class/ventas.php";
+
+$venta = new ventas;
+
+if(isset($_POST['num_factura'], $_POST['cod_articulo'])){
+
+	$venta->borrar_venta($_POST['num_factura'], $_POST['cod_articulo'], $conexion);
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,6 +68,8 @@
 			<input type="button" value="Cancelar" id="cancelar" name="cancelar" onclick="limpiar_pantalla('d_ventas');">
 			<input type="hidden" name="disponible" id="disponible">
 			<input type="hidden" name="h_cantidad" id="h_cantidad">
+			<p><?php echo $venta->mensaje;?></p>
+			<p><?php echo $venta->error;?></p>
 	</form>
 </body>
 </html>

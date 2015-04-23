@@ -2,9 +2,12 @@
 
 require "conexion.php";
 require "class/ventas.php";
+
+$venta = new ventas;
+
 if(isset($_POST["num_factura"], $_POST["cod_articulo"], $_POST["cod_persona"], $_POST["cantidad"], $_POST["total_detalle"], $_POST["descuento"])){
 
-	echo "viva la liga";
+	$venta->modificar_venta($_POST["num_factura"], $_POST["cod_articulo"], $_POST["cod_persona"], $_POST["cantidad"], $_POST["total_detalle"], $_POST["descuento"],$conexion);
 
 }
 
@@ -56,18 +59,19 @@ if(isset($_POST["num_factura"], $_POST["cod_articulo"], $_POST["cod_persona"], $
 				</tr>
 				<tr>
 					<td><label for="descuento">Descuento: </label></td>
-					<td><input type="number" id="descuento" name="descuento" readonly="true"></td>
+					<td><input type="number" id="descuento" name="descuento" onkeypress="TotalAcumuladoModificar(event);"></td>
 				</tr>
 			</table>
 		</fieldset>
 		 	
 		 	<input type="button" value="Buscar" id="buscar" name="buscar" onclick="BuscarFactura();">
 			<input type="button" value="Modificar" id="modificar" name="modificar" onclick="validarCampos('u_ventas');">
-
 			<input type="button" value="Cancelar" id="cancelar" name="cancelar" onclick="limpiar_pantalla('u_ventas');">
 			<input type="hidden" name="disponible" id="disponible">
 			<input type="hidden" name="h_cantidad" id="h_cantidad">
 			<input type="hidden" name="h_precio" id="h_precio">
+			<p><?php echo $venta->mensaje;?></p>
+			<p><?php echo $venta->error;?></p>
 
 	</form>
 </body>

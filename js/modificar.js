@@ -49,7 +49,6 @@ function BuscarFactura(){
 
     alert("Por favor digite el número de la factura y el código de la categoria");
   }
-
 }
 
 
