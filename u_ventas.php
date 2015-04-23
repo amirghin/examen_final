@@ -1,28 +1,14 @@
-<?php
-
-require "conexion.php";
-require "class/ventas.php";
-
-$venta = new ventas;
-
-if(isset($_POST['num_factura'], $_POST['cod_articulo'], $_POST['cod_persona'], $_POST['cantidad'], $_POST['total_detalle'], $_POST['descuento'])){
-
-	$venta->insertar_venta($_POST['num_factura'], $_POST['cod_articulo'], $_POST['cod_persona'], $_POST['cantidad'], $_POST['total_detalle'], $_POST['descuento'], $conexion);
-
-}
-
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Insertar Ventas</title>
+	<title>Modificar Ventas</title>
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
 	<script src="js/ventas.js" type="text/javascript"></script>
+	<script src="js/modificar.js" type="text/javascript"></script>
 
 </head>
 <body>
-	<form method="post" action="" id="i_ventas">
+	<form method="post" action="" id="u_ventas">
 		<fieldset>
 			 <table>
 				<tr>
@@ -62,12 +48,14 @@ if(isset($_POST['num_factura'], $_POST['cod_articulo'], $_POST['cod_persona'], $
 				</tr>
 			</table>
 		</fieldset>
-		 
-			<input type="button" value="Insertar" id="insertar" name="insertar" onclick="validarCampos('i_ventas');">
-			<input type="button" value="Limpiar" id="limpiar" name="limpiar" onclick="limpiar_pantalla('i_ventas');">	
-			<p><?php echo $venta->mensaje;?></p>
-			<p><?php echo $venta->error;?></p>
-		 
+		 	
+		 	<input type="button" value="Buscar" id="buscar" name="buscar" onclick="BuscarFactura();">
+			<!-- <input type="button" value="Insertar" id="insertar" name="insertar" onclick="validarCampos(u_ventas);"> -->
+			<input type="button" value="Insertar" id="insertar" name="insertar" onclick="validarDisponibilidad();">
+
+			<input type="button" value="Cancelar" id="cancelar" name="cancelar" onclick="limpiar_pantalla('u_ventas');">
+			<input type="hidden" name="disponible" id="disponible">
+
 	</form>
 </body>
 </html>
