@@ -5,12 +5,18 @@ function MostrarTotales(e){
 
   if (e.keyCode==13){
 
-    if(document.getElementById("cantidad").value != "" && document.getElementById("cod_articulo").value != "" && document.getElementById("num_factura").value != ""){
+    if(document.getElementById("cantidad").value != "" && parseFloat(document.getElementById("cantidad").value) > 0 && document.getElementById("cod_articulo").value != "" && document.getElementById("num_factura").value != ""){
       BuscarArticulo(document.getElementById("cod_articulo").value);
     }else if(document.getElementById("cod_articulo").value == ""){
       alert("Por favor seleccione un codigo de articulo");
+      document.getElementById("cod_articulo").focus();
     }else if(document.getElementById("num_factura").value == ""){
       alert("Por favor seleccione un numero de factura");
+      document.getElementById("num_factura").focus();
+    }else if(parseFloat(document.getElementById("cantidad").value) <= 0){
+      alert("El campo cantidad tiene que ser mayor a 0");
+      document.getElementById("cantidad").focus();
+
     }
   }     
 }
@@ -28,7 +34,13 @@ function BuscarArticulo(articulo){
   return false;  
 }
 
+function TotalDetalle(descuento, precio, cantidad){
 
+  var descuento = (descuento * precio / 100);
+  var total_detalle = (precio - descuento) * cantidad;
+  return total_detalle;
+
+}
 
 function stateChanged_buscar_articulo() { 
   if (xmlHttp_buscar_articulo.readyState==4 || xmlHttp_buscar_articulo.readyState=="complete"){ 
@@ -36,10 +48,11 @@ function stateChanged_buscar_articulo() {
     var cantidad = parseFloat(document.getElementById("cantidad").value);
     var disponible = parseFloat(articulo_json.disponible);
     var precio = parseFloat(articulo_json.precio);
+    var descuento = parseFloat(articulo_json.descuento);
 
     if (articulo_json.descripcion && disponible >= cantidad){
-      var descuento = (parseFloat(articulo_json.descuento) * precio / 100);
-      total_detalle = (precio - descuento) * cantidad;
+      
+      total_detalle = TotalDetalle(descuento, precio, cantidad);
       document.getElementById("total_detalle").value = total_detalle;
       document.getElementById("descuento").value = articulo_json.descuento; 
       TotalAcumulado(document.getElementById("num_factura").value);
@@ -174,6 +187,10 @@ function validarCampos(form_name){
   }else if(document.getElementById("total_detalle").value == ""){
     alert("El campo total detalle es requerido, por favor calcule el monto utilizando el campo cantidad");
     document.getElementById("cantidad").focus();
+  }else if(parseFloat(document.getElementById("cantidad").value) <= 0){
+    alert("El campo cantidad tiene que ser mayor a 0");
+    document.getElementById("cantidad").focus();
+
   }else{
 
     document.getElementById(form_name).submit();

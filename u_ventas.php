@@ -32,7 +32,7 @@
 				</tr>
 				<tr>
 					<td><label for="cantidad">Cantidad: </label></td>
-					<td><input type="number" id="cantidad" name="cantidad" onkeypress="MostrarTotales(event);"></td>
+					<td><input type="number" id="cantidad" name="cantidad" onkeypress="TotalAcumuladoModificar(event);"></td>
 				</tr>
 				<tr>
 					<td><label for="total_detalle">Total Detalle: </label></td>
@@ -51,10 +51,11 @@
 		 	
 		 	<input type="button" value="Buscar" id="buscar" name="buscar" onclick="BuscarFactura();">
 			<!-- <input type="button" value="Insertar" id="insertar" name="insertar" onclick="validarCampos(u_ventas);"> -->
-			<input type="button" value="Insertar" id="insertar" name="insertar" onclick="validarDisponibilidad();">
+			<input type="button" value="Insertar" id="insertar" name="insertar" onclick="validarCampos('u_ventas');">
 
 			<input type="button" value="Cancelar" id="cancelar" name="cancelar" onclick="limpiar_pantalla('u_ventas');">
 			<input type="hidden" name="disponible" id="disponible">
+			<input type="hidden" name="h_cantidad" id="h_cantidad">
 
 	</form>
 </body>
