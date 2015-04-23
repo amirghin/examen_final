@@ -1,3 +1,15 @@
+<?php
+
+require "conexion.php";
+require "class/ventas.php";
+if(isset($_POST["num_factura"], $_POST["cod_articulo"], $_POST["cod_persona"], $_POST["cantidad"], $_POST["total_detalle"], $_POST["descuento"])){
+
+	echo "viva la liga";
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,12 +62,12 @@
 		</fieldset>
 		 	
 		 	<input type="button" value="Buscar" id="buscar" name="buscar" onclick="BuscarFactura();">
-			<!-- <input type="button" value="Insertar" id="insertar" name="insertar" onclick="validarCampos(u_ventas);"> -->
-			<input type="button" value="Insertar" id="insertar" name="insertar" onclick="validarCampos('u_ventas');">
+			<input type="button" value="Modificar" id="modificar" name="modificar" onclick="validarCampos('u_ventas');">
 
 			<input type="button" value="Cancelar" id="cancelar" name="cancelar" onclick="limpiar_pantalla('u_ventas');">
 			<input type="hidden" name="disponible" id="disponible">
 			<input type="hidden" name="h_cantidad" id="h_cantidad">
+			<input type="hidden" name="h_precio" id="h_precio">
 
 	</form>
 </body>

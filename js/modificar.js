@@ -8,7 +8,7 @@ function TotalAcumuladoModificar(e){
     var total_detalle = parseFloat(document.getElementById("total_detalle").value);
     var descuento = parseFloat(document.getElementById("descuento").value);
     var total_acumulado = parseFloat(document.getElementById("total_acumulado").value);
-    var precio = total_detalle/cantidad;
+    var precio = parseFloat(document.getElementById("h_precio").value);
     
     if(nueva_cantidad <= 0){
       alert("La cantidad tiene que ser mayor que 0");

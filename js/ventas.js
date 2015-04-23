@@ -117,6 +117,8 @@ function stateChanged_articulo() {
       document.getElementById('cod_categoria').value = articulo_json.codigo_categoria;
       document.getElementById('nom_categoria').value = articulo_json.categoria;
       document.getElementById("disponible").value = articulo_json.disponible;
+      document.getElementById("h_precio").value = articulo_json.precio;
+
     }
   } 
 } 
