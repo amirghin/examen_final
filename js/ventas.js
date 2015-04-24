@@ -253,7 +253,9 @@ function BuscarFacturaFecha(){
 
   if(factura != "" && fecha != ""){
 
+    if(document.getElementById("consulta_fecha"))tableDelete();
     FacturaFecha(factura, fecha);
+
 
   }else{
 
@@ -283,7 +285,7 @@ function stateChanged_buscar_factura_fecha() {
     tableCreate(factura_json.facturas);
     }else{
 
-      alert(factura_json.facturas.error);
+      document.getElementById("tabla_busqueda").innerHTML = factura_json.facturas.error;
     }
   } 
 }
@@ -295,7 +297,6 @@ function tableDelete(){
 }
 
 function tableCreate(facturas){
-    if(document.getElementById("consulta_fecha"))tableDelete();
     
     var body = document.getElementById("tabla_busqueda"),
         tbl  = document.createElement('table');

@@ -21,7 +21,7 @@
 				</table>
 			</fieldset>
 			<fieldset>
-				<div class="TablaBusqueda" id="tabla_busqueda"></div>
+				<div class="TablaBusqueda" id="tabla_busqueda" border="none"></div>
 			</fieldset>
 		</form>
 	</section>
