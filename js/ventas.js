@@ -285,7 +285,7 @@ function stateChanged_buscar_factura_fecha() {
     tableCreate(factura_json.facturas);
     }else{
 
-      document.getElementById("tabla_busqueda").innerHTML = factura_json.facturas.error;
+      alert(factura_json.facturas.error);
     }
   } 
 }
