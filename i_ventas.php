@@ -19,7 +19,7 @@ if(isset($_POST['num_factura'], $_POST['cod_articulo'], $_POST['cod_persona'], $
 	<title>Insertar Ventas</title>
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
 	<script src="js/ventas.js" type="text/javascript"></script>
-
+	<?php include('includes/header.html');?> 
 </head>
 <body>
 	<section class="Formulario">

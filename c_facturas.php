@@ -4,6 +4,7 @@
 	<title>Consultar Factura por Fecha</title>
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
 	<script src="js/ventas.js" type="text/javascript"></script>
+	<?php include('includes/header.html');?> 
 </head>
 <body>
 	<section class="Busqueda">

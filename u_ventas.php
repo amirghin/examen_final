@@ -19,6 +19,7 @@ if(isset($_POST["num_factura"], $_POST["cod_articulo"], $_POST["cod_persona"], $
 	<title>Modificar Ventas</title>
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
 	<script src="js/ventas.js" type="text/javascript"></script>
+	<?php include('includes/header.html');?> 
 </head>
 <body>
 	<section class="Formulario">
@@ -63,7 +64,7 @@ if(isset($_POST["num_factura"], $_POST["cod_articulo"], $_POST["cod_persona"], $
 					</tr>
 				</table>
 			</fieldset>
-			 	
+			<fieldset>
 			 	<input type="button" value="Buscar" id="buscar" name="buscar" onclick="BuscarFactura();">
 				<input type="button" value="Modificar" id="modificar" name="modificar" onclick="validarCampos('u_ventas');">
 				<input type="button" value="Cancelar" id="cancelar" name="cancelar" onclick="limpiar_pantalla('u_ventas');">
@@ -72,6 +73,7 @@ if(isset($_POST["num_factura"], $_POST["cod_articulo"], $_POST["cod_persona"], $
 				<input type="hidden" name="h_precio" id="h_precio">
 				<p class="mensaje"><?php echo $venta->mensaje;?></p>
 				<p class="error"><?php echo $venta->error;?></p>
+			</fieldset>
 
 		</form>
 	</section>

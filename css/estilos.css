@@ -14,6 +14,11 @@ body{
 	outline: 0;
 }
 
+.Header fieldset{
+
+	border: none;
+}
+
 .Busqueda h1,
 .Formulario h1{
 	margin: 0px 0px 15px 0px;
@@ -50,7 +55,15 @@ body{
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2), 
     			inset 0px 1px 0px 0px rgba(250, 250, 250, 0.5);
     border: 1px solid rgba(0, 0, 0, 0.3);
+}
 
+.Header{
+	width: 900px;
+	margin: 1px auto;
+	clear: both;
+	padding: 25px;
+	border-radius: 5px;
+    border: none;
 }
 
 .Busqueda input:not([type=button]),
@@ -65,7 +78,8 @@ body{
 	width: 240px;
 }
 
-
+.Header input[type=submit],
+.Header input[type=button],
 .Busqueda input[type=submit],
 .Busqueda input[type=button],
 .Formulario input[type=submit],
